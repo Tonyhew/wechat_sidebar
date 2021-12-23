@@ -1,0 +1,58 @@
+.container_child {
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .addTimeline {
+    margin-top: 1rem;
+    span {
+      font-size: .9rem;
+    }
+  }
+
+  .timeline_main {
+    margin-top: 1rem;
+
+  }
+
+}
+
+.ant-btn-primary span {
+  color: #fff;
+}
+
+.timeline-modal {
+
+  .timeline-addContent {
+    width: 100%;
+    font-size: .9rem!important;
+    display: inline-block;
+
+    input {
+      width: 75%;
+    }
+  }
+
+  button {
+
+    span {
+      font-size: .9rem;
+    }
+    
+  }
+}
+
+.ant-timeline-item {
+
+  .ant-timeline-item-head-blue {
+    background-color: #1890ff!important;
+  }
+
+  &:first-child .ant-timeline-item-head-blue {
+    box-shadow: 0 0 2px 1px #1890ff;
+  }
+
+}
+
+

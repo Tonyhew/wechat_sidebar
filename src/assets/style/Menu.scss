@@ -1,0 +1,17 @@
+.menu-list {
+  margin: 0 auto .5rem;
+  width: 97%;
+  
+  a {
+    width: 25%;
+    margin: 0.5rem auto;
+    color: #333;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .isActive {
+    font-weight: bold;
+    color: #000;
+  }
+}

@@ -1,0 +1,28 @@
+*, html, body {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+}
+
+a, a:hover {
+  color: #333!important;
+}
+
+.container_child {
+  width: 90%;
+  margin: 0 auto;
+
+  .client_info {
+    p {
+      font-size: .9rem;
+      margin: 0;
+      padding: 0;
+      line-height: 32px;
+      height: 32px;
+    }
+  }
+}
+
