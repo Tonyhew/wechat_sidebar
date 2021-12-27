@@ -32,19 +32,36 @@ function Client() {
     <div className={'container_child'}>
       {
         clientInfo.map((clientInfo, index) => {
+          
+          const {
+            operation_record,
+            name,
+            wechat_name,
+            gender,
+            mobile,
+            city,
+            provice,
+            city_area,
+            isInteresting,
+            interesting_project,
+            client_job,
+            client_income,
+            client_isHospital,
+          } = clientInfo;
+
           return (
             <div key={index} className={'client_info'}>
-              <p>操作记录: {clientInfo.operation_record}</p>
-              <p>真实姓名: {clientInfo.name}</p>
-              <p>微信昵称: {clientInfo.wechat_name}</p>
-              <p>性别: {clientInfo.gender === 1 ? '男' : '女'}</p>
-              <p>手机号: {clientInfo.mobile}</p>
-              <p>所在地区: {clientInfo.city} - {clientInfo.provice} - {clientInfo.city_area}</p>
-              <p>客户意向: {clientInfo.isInteresting}</p>
-              <p>意向项目: {clientInfo.interesting_project}</p>
-              <p>客户职业: {clientInfo.client_job}</p>
-              <p>收入情况: {clientInfo.client_income}</p>
-              <p>到院情况: {clientInfo.client_isHospital}</p>
+              <p>操作记录: {operation_record}</p>
+              <p>真实姓名: {name}</p>
+              <p>微信昵称: {wechat_name}</p>
+              <p>性别: {gender === 1 ? '男' : '女'}</p>
+              <p>手机号: {mobile}</p>
+              <p>所在地区: {city} - {provice} - {city_area}</p>
+              <p>客户意向: {isInteresting}</p>
+              <p>意向项目: {interesting_project}</p>
+              <p>客户职业: {client_job}</p>
+              <p>收入情况: {client_income}</p>
+              <p>到院情况: {client_isHospital}</p>
             </div>
           )
         })
