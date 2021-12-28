@@ -81,7 +81,7 @@ function UserInfo() {
   // 客户标签
   const [clientTag, setClientTag] = useState([]);
   // 已选择的标签
-  // const [chooseTag, setChooseTag] = useState([])
+  const [chooseTag, setChooseTag] = useState([])
 
 
   useEffect(() => {
@@ -91,7 +91,7 @@ function UserInfo() {
     setIshospital(isH[0].value);
     // setHospitalList(hlList.list);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [chooseTag])
 
   // mock客户数据
   const getData = (data) => {
@@ -127,7 +127,8 @@ function UserInfo() {
   }
 
   const handleTagChange = (tagArr) => {
-    console.log(tagArr)
+    setChooseTag(tagArr)
+    console.log(chooseTag)
   }
 
   return (
