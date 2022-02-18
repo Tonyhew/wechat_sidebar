@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Card, Avatar, Select, Tag, Cascader } from 'antd';
 import { FormOutlined } from '@ant-design/icons';
-import '../assets/style/UserInfo.scss'
+import * as ww from '@wecom/jssdk'
+import api from '../config/api.config';
+import '../assets/style/UserInfo.scss';
 
 function UserInfo() {
 
-  const data = {
-    "data": [
-      {
-        'avatar': 'https://joeschmoe.io/api/v1/random',
-        'name': 'tt',
-        'mobile': '13916627096',
-        'gender': '女'
+  const data = [
+    {
+      id: 1,
+      isSuccess: true,
+      user: {
+        avatar: 'https://joeschmoe.io/api/v1/random',
+        name: 'tt',
+        mobile: 'xxxxxxxxxxx',
+        gender: '女'
       }
-    ]
-  }
+    }
+  ]
 
   const clientS = [
     {
@@ -85,18 +90,21 @@ function UserInfo() {
 
 
   useEffect(() => {
-    getData(data);
+
+    getWXUserData()
+
+    setWxUserList(data);
     setClientTag(tagData);
     setClientSource(clientS);
     setIshospital(isH[0].value);
     // setHospitalList(hlList.list);
+    handleTagChange(chooseTag)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chooseTag])
+  }, [chooseTag, isHospital])
 
   // mock客户数据
-  const getData = (data) => {
-    let res = data.data
-    setWxUserList(res)
+  const getWXUserData = (data) => {
+    
   }
 
   // 编辑客户信息
@@ -126,6 +134,7 @@ function UserInfo() {
     );
   }
 
+  // 获取已被选中的客户标签（数组）
   const handleTagChange = (tagArr) => {
     setChooseTag(tagArr)
     console.log(chooseTag)
@@ -141,23 +150,24 @@ function UserInfo() {
         {
           wxUserList.map((wxUserList, index) => {
             return (
-              <div key={index} className={'userInfo-left'}>
-                <Meta
-                  avatar={<Avatar src={wxUserList.avatar} />}
-                  title={
-                    <h2 className={'user-name'}>{wxUserList.name}</h2>
-                  }
-                  description={
-                    <>
-                      <div>
-                        <span className={'user-mobile'}>电话：{wxUserList.mobile}</span>
-                        <span className={'user-gender'}>性别：{wxUserList.gender}</span>
-                      </div>
-                    </>
-                  }
-                />
+              wxUserList.isSuccess ?
+                <div key={index} className={'userInfo-left'}>
+                  <Meta
+                    avatar={<Avatar src={wxUserList.user.avatar} />}
+                    title={
+                      <h2 className={'user-name'}>{wxUserList.user.name}</h2>
+                    }
+                    description={
+                      <>
+                        <div>
+                          <span className={'user-mobile'}>电话: {wxUserList.user.mobile}</span>
+                          <span className={'user-gender'}>性别: {wxUserList.user.gender}</span>
+                        </div>
+                      </>
+                    }
+                  />
 
-              </div>
+                </div> : null
             )
           })
         }
