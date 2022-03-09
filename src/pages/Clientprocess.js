@@ -68,8 +68,10 @@ function ClientProcess() {
   // 
   const onOkModal = (e) => {
     const dataset = {
-      tlRemark: tlRemark,
+      event: tlRemark,
     }
+    console.log(timeLine)
+
     axios({
       url: api.getTken,
       data: dataset,
@@ -80,6 +82,11 @@ function ClientProcess() {
     }).then(
       res => {
         console.log(res)
+        timeLine.push(
+          { event: tlRemark }
+        )
+        setTLRemark('')
+        setAddTLModal(false)
       }
     )
   }
@@ -96,7 +103,7 @@ function ClientProcess() {
         cancelText={'取消'}
       >
         <span className={'timeline-addContent'}>
-          跟进内容：
+          跟进内容: 
           <Input
             value={tlRemark}
             onChange={changeInputValue}
