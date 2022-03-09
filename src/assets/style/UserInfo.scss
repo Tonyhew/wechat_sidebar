@@ -19,7 +19,7 @@
   .userInfo-left {
 
     .user-name, .ant-card-meta-title {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       margin: 0;
       line-height: 2rem;
     }
@@ -70,7 +70,8 @@
     display: inline-block;
     
     .clientSource {
-      width: 4rem!important;
+      // width: 4rem!important;
+      text-align: right;
     }
 
     .isHospital {
