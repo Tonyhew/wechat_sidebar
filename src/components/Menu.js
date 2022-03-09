@@ -8,28 +8,20 @@ const dataList = [
     title: '基本信息',
     href: 'client'
   },
+  
   {
     id: 2,
-    title: '客户跟进',
-    href: 'clientprocess'
-  },
-  {
-    id: 3,
     title: '客户轨迹',
     href: 'clientpath'
   },
+  
   {
-    id: 2,
-    title: '健康档案',
-    href: 'healthfile'
-  },
-  {
-    id: 2,
+    id: 3,
     title: '诊疗日记',
     href: 'MedicalDairy'
   },
   {
-    id: 2,
+    id: 4,
     title: '交易记录',
     href: 'payment'
   }
