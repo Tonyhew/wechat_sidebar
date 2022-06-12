@@ -31,6 +31,7 @@ function Client(props) {
   useEffect(() => {
     setClientInfo(props.qwUserList)
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

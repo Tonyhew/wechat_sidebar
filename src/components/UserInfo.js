@@ -12,44 +12,44 @@ function UserInfo(props) {
 
   const qwUserList = props.qwUserList;
 
-  const tagData = [
-    {
-      value: 'shanghai',
-      label: 'shanghai',
-    },
-    {
-      value: 'nanjing',
-      label: 'nanjing',
-    },
-    {
-      value: 'shandong',
-      label: 'shandong',
-    },
-    {
-      value: 'zhejiang',
-      label: 'zhejiang',
-    },
-    {
-      label: 'Bamboo',
-      value: 'bamboo',
-      children: [
+  // const tagData = [
+  //   {
+  //     value: 'shanghai',
+  //     label: 'shanghai',
+  //   },
+  //   {
+  //     value: 'nanjing',
+  //     label: 'nanjing',
+  //   },
+  //   {
+  //     value: 'shandong',
+  //     label: 'shandong',
+  //   },
+  //   {
+  //     value: 'zhejiang',
+  //     label: 'zhejiang',
+  //   },
+  //   {
+  //     label: 'Bamboo',
+  //     value: 'bamboo',
+  //     children: [
 
-        {
-          label: 'Toy Fish',
-          value: 0,
-        },
-        {
-          label: 'Toy Cards',
-          value: 1,
-        },
-        {
-          label: 'Toy Bird',
-          value: 2,
-        },
+  //       {
+  //         label: 'Toy Fish',
+  //         value: 0,
+  //       },
+  //       {
+  //         label: 'Toy Cards',
+  //         value: 1,
+  //       },
+  //       {
+  //         label: 'Toy Bird',
+  //         value: 2,
+  //       },
 
-      ],
-    },
-  ]
+  //     ],
+  //   },
+  // ]
 
 
   const { Meta } = Card;
@@ -71,7 +71,7 @@ function UserInfo(props) {
     }
 
     // 客户标签
-    setClientTag(tagData);
+    setClientTag(qwUserList.tagRecordsList);
     // 是否已到院
     setIshospital(qwUserList.visitStatus);
     // setHospitalList(hlList.list);
