@@ -1,5 +1,5 @@
 // 配置公共BaseURL
-let url = 'https://backstage.huangzhemin.com/miniapp';
+let url = process.env.REACT_APP_ENV === 'development' ? process.env.REACT_APP_BASE_URL : 'https://applets.seouleaguer.com/miniapp';
 
 // 接口配置输出总览
 let servicePath = {

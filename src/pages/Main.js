@@ -63,7 +63,6 @@ const Main = () => {
         } else {
           // 初始化 agentConfig
           init_agentConfig()
-
           // agentConfig ok 后，获取 UserId 进行后续操作
           if (agentConfigMsg === 'agentConfig:ok') {
             getQWUser()
@@ -144,6 +143,10 @@ const Main = () => {
 
       onAgentConfigSuccess(res) {
         setAgentConfigMsg(res.errMsg)
+      },
+
+      onAgentConfigFail(err) {
+        console.log(err)
       }
 
     });
@@ -193,7 +196,7 @@ const Main = () => {
   return (
     isQWXEnv ? <Router>
       <Routes>
-        <Route path="/" element={<Home qwUserList={qwUserList} />}>
+        <Route path="/" element={<Home qwUserList={qwUserList} qwUserId={qwUserId} />}>
           <Route path='/client' element={<Client qwUserList={qwUserList} />}></Route>
           {/* <Route path='/clientprocess' element={<CP />}></Route> */}
           {/* <Route path='/Healthfile' element={<Healthfile />}></Route> */}

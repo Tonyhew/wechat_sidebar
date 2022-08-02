@@ -3,50 +3,58 @@
  * @author Tonyhew
  */
 
-import React, { useEffect, useState } from 'react';
-
-// mock data
-// const client = [
-//   {
-//     operation_record: '新增跟进',
-//     name: 'hhh',
-//     wechat_name: 'ddd',
-//     gender: 2,
-//     mobile: '13916627096',
-//     city: '上海市',
-//     provice: '上海市',
-//     city_area: '浦东新区',
-//     isInteresting: '很感兴趣',
-//     interesting_project: '皮肤科',
-//     client_job: '学生',
-//     client_income: '10k',
-//     client_isHospital: '未到院',
-//   }
-// ]
+import React, { useEffect, useState } from 'react'
 
 function Client(props) {
-
   const [clientInfo, setClientInfo] = useState([])
+  const [currentAge, setCurrentAge] = useState('')
 
   useEffect(() => {
     setClientInfo(props.qwUserList)
+    let b = new Date(clientInfo.birthday).getTime()
+    var n = new Date().getTime()
+    //一年毫秒数(365 * 86400000 = 31536000000)
+    let r = Math.ceil((n - b) / 31536000000)
+    setCurrentAge(r)
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [clientInfo])
+
+  function fmoney(s, n) {
+    n = n > 0 && n <= 20 ? n : 2
+    // eslint-disable-next-line no-useless-escape
+    s = parseFloat((s + '').replace(/[^\d\.-]/g, '')).toFixed(n) + ''
+    var l = s.split('.')[0].split('').reverse(),
+      r = s.split('.')[1],
+    t = ''
+    for (let i = 0; i < l.length; i++) {
+      t += l[i] + ((i + 1) % 3 === 0 && i + 1 !== l.length ? ',' : '')
+    }
+    return t.split('').reverse().join('') + '.' + r
+  }
 
   return (
     <div className={'container_child'}>
       {
+        // ，，，
         <div className={'client_info'}>
-          <p>真实姓名: {clientInfo.name}</p>
+          <p>姓名: {clientInfo.name}</p>
           <p>性别: {clientInfo.gender}</p>
-          <p>手机号: {clientInfo.mobile}</p>
-          <p>所在地区: {clientInfo.addressOne} - {clientInfo.addressTwo}</p>
-          <p>到院情况: {clientInfo.visitStatus}</p>
+          <p>电话: {clientInfo.mobile}</p>
+          <p>生日: {clientInfo.birthday}</p>
+          <p>年龄: {currentAge} 岁</p>
+          <p>
+            地区: {clientInfo.addressOne} - {clientInfo.addressTwo}
+          </p>
+          <p>咨询意向: {clientInfo.consultIntention}</p>
+          <p>消费金额: {fmoney(clientInfo.totalMoney, 2)} 元</p>
+          <p>顾客类型: {clientInfo.customerLevel}</p>
+          <p>会员等级: {clientInfo.memberLevel}</p>
+          <p>未回访天数: {clientInfo.noReturnVisitDays}</p>
         </div>
       }
     </div>
   )
 }
 
-export default Client;
+export default Client

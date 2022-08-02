@@ -14,7 +14,7 @@ function Home(props) {
 
   return (
     <div>
-      <UserInfo qwUserList={props.qwUserList} />
+      <UserInfo qwUserList={props.qwUserList} qwUserId={props.qwUserId} />
       <Menu />
       <Outlet />
     </div>

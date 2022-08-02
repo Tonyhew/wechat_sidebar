@@ -20,6 +20,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:prod": "cross-env REACT_APP_ENV=production react-scripts start",
+    "start:dev": "cross-env REACT_APP_ENV=development react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -44,6 +46,7 @@
   },
   "proxy": "https://qyapi.weixin.qq.com",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "node-sass": "^6.0.1"
   }
 }

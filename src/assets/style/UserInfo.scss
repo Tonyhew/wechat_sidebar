@@ -65,12 +65,11 @@
   .cTag {
     width: 100%;
     height: 32px;
-      line-height: 32px;
-    margin: 0.5rem auto;
+    line-height: 32px;
+    margin: 0 auto;
     display: inline-block;
     
     .clientSource {
-      // width: 4rem!important;
       text-align: right;
     }
 
