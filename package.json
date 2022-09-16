@@ -47,6 +47,7 @@
   "proxy": "https://qyapi.weixin.qq.com",
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "node-sass": "^6.0.1"
+    "node-sass": "^7.0.1",
+    "sass": "^1.54.3"
   }
 }

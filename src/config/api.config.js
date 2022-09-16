@@ -7,6 +7,7 @@ let servicePath = {
   getSignature: `${url}/signature/getSignature?htmlUrl=`,
   // 获取用户信息
   getUserInfo: `${url}/customerInformation/getCustomerDetails?userId=`,
+  selectDeductionRecordList: `${url}/UsageRecord/selectDeductionRecordList`,
 
 };
 

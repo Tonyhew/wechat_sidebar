@@ -3,35 +3,22 @@
  * @author Tonyhew
  */
 
-import React, { useEffect, useState } from 'react'
+import { message } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { fmoney } from '../utils';
 
 function Client(props) {
-  const [clientInfo, setClientInfo] = useState([])
-  const [currentAge, setCurrentAge] = useState('')
+  const [clientInfo, setClientInfo] = useState([]);
+  const [currentAge, setCurrentAge] = useState('');
 
   useEffect(() => {
-    setClientInfo(props.qwUserList)
-    let b = new Date(clientInfo.birthday).getTime()
-    var n = new Date().getTime()
+    setClientInfo(props.qwUserList);
+    let b = new Date(clientInfo.birthday).getTime();
+    var n = new Date().getTime();
     //一年毫秒数(365 * 86400000 = 31536000000)
-    let r = Math.ceil((n - b) / 31536000000)
-    setCurrentAge(r)
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clientInfo])
-
-  function fmoney(s, n) {
-    n = n > 0 && n <= 20 ? n : 2
-    // eslint-disable-next-line no-useless-escape
-    s = parseFloat((s + '').replace(/[^\d\.-]/g, '')).toFixed(n) + ''
-    var l = s.split('.')[0].split('').reverse(),
-      r = s.split('.')[1],
-    t = ''
-    for (let i = 0; i < l.length; i++) {
-      t += l[i] + ((i + 1) % 3 === 0 && i + 1 !== l.length ? ',' : '')
-    }
-    return t.split('').reverse().join('') + '.' + r
-  }
+    let r = Math.ceil((n - b) / 31536000000);
+    setCurrentAge(r);
+  }, [clientInfo, props]);
 
   return (
     <div className={'container_child'}>
@@ -54,7 +41,7 @@ function Client(props) {
         </div>
       }
     </div>
-  )
+  );
 }
 
-export default Client
+export default Client;

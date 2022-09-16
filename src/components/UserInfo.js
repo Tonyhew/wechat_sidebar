@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react'
-import { Card, Avatar, Select, Tag, Cascader, Skeleton } from 'antd'
+import { Card, Avatar, Select, Tag, Cascader, Skeleton, message } from 'antd'
 import { FormOutlined } from '@ant-design/icons'
 import { hideMobileNum } from '../utils/index'
 import '../assets/style/UserInfo.scss'
@@ -45,7 +45,7 @@ function UserInfo(props) {
 
   // 打招呼
   const handleChat = () => {
-    console.log('sdfsfsdfs')
+    message.info('开发中')
   }
 
   // 客户标签循环
@@ -114,7 +114,7 @@ function UserInfo(props) {
               </span>
             )}
 
-            {userListSkeleton ? (
+            {/* {userListSkeleton ? (
               <Skeleton.Button
                 active
                 shape={'circle'}
@@ -123,9 +123,9 @@ function UserInfo(props) {
               ></Skeleton.Button>
             ) : (
               <span className={'user-sayhi'} onClick={() => handleChat()}>
-                打招呼
+                快捷回复
               </span>
-            )}
+            )} */}
           </div>
         </Card>
       </Skeleton>
@@ -160,13 +160,17 @@ function UserInfo(props) {
           </span>
 
           <span className={'cTag'}>
-            指定咨询师
-            <span style={{ float: 'right' }}>{qwUserList.consultant ? qwUserList.consultant : '-'}</span>
+            所属顾问
+            <span style={{ float: 'right' }}>
+              {qwUserList.consultant ? qwUserList.consultant : '-'}
+            </span>
           </span>
 
           <span className={'cTag'}>
             开发人
-            <span style={{ float: 'right' }}>{qwUserList.developer ? qwUserList.developer : '-'}</span>
+            <span style={{ float: 'right' }}>
+              {qwUserList.developer ? qwUserList.developer : '-'}
+            </span>
           </span>
 
           {/* <span className={'cTag clientTag'}>
