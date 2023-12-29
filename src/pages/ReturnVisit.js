@@ -51,7 +51,7 @@ const ReturnVisit = (props) => {
       width: 60,
       ellipsis: true,
       render: (v) => {
-        return v ? v : '-- -- --'
+        return v ? v : '-- 无 --'
       }
     },
     {
