@@ -177,7 +177,6 @@ const Main = () => {
         'Acess-Control-Allow-Origin': '*'
       }
     }).then((res) => {
-      console.log(res);
       if (res.data.errMsg === '成功') {
         const data = res.data;
         setQWUserList(data.data);
@@ -189,10 +188,10 @@ const Main = () => {
   }, [qwUserId]);
 
   useEffect(() => {
-    if (qwUserList.length <= 0 && qwUserList) {
-      message.error('请确认你的电话号码是否正确填写!!!');
+    if (qwUserList.length <= 0 && qwUserList && qwUserId) {
+      message.error('请确认你的顾客备注电话号码是否正确填写!!!');
     }
-  }, [qwUserList, qwUserList.length]);
+  }, [qwUserId, qwUserList, qwUserList.length]);
 
   return isQWXEnv ? (
     <Router>

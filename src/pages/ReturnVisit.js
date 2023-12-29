@@ -74,7 +74,7 @@ const ReturnVisit = (props) => {
         dataSource={returnVisitList}
         columns={visitHistoryListColumns}
         rowKey={(v) => v.visitId}
-        scroll={{ x: 350, y: 200 }}
+        scroll={{ x: 350, y: 500 }}
         expandable={{
           columnWidth: 15,
           expandedRowRender: (a) => a.content,

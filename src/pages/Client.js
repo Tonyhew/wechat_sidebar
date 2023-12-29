@@ -35,13 +35,19 @@ function Client(props) {
           clearTimeout(t);
           setDataLoading(false);
           setClientInfo(res.data);
+          let b = new Date(clientInfo.birthday).getTime();
+          let n = new Date().getTime();
+          //一年毫秒数(365 * 86400000 = 31536000000)
+          let r = Math.ceil((n - b) / 31536000000);
+          setCurrentAge(r);
         }
       })
       .catch((err) => {
         clearTimeout(t);
+        setDataLoading(false);
         message.error(err);
       });
-  }, [qwUserList]);
+  }, [clientInfo.birthday, qwUserList]);
 
   useEffect(() => {
     getClientInfo();
@@ -49,7 +55,7 @@ function Client(props) {
 
   return (
     <div className={'container_child'}>
-      <Skeleton active loading={dataLoading} />
+      <Skeleton active loading={dataLoading} paragraph />
 
       {!dataLoading && (
         <div className={'client_info'}>

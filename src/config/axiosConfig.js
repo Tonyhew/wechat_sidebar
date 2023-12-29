@@ -32,7 +32,6 @@ service.interceptors.request.use(
 // 收到服务器返回的数据，可以在这里进行一些设置
 service.interceptors.response.use(
   (res) => {
-    console.log(res.data.errCode)
     let m = ''
     switch(res.data.errCode) {
       case 0:
