@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react'
-import { Card, Avatar, Select, Tag, Cascader, Skeleton, message } from 'antd'
+import { Card, Avatar, Select, Skeleton } from 'antd'
 import { FormOutlined } from '@ant-design/icons'
 import { hideMobileNum } from '../utils/index'
 import '../assets/style/UserInfo.scss'
@@ -19,7 +19,7 @@ function UserInfo(props) {
   // 到院情况（字符串）
   const [isHospital, setIshospital] = useState('')
   // 客户标签
-  const [clientTag, setClientTag] = useState([])
+  // const [clientTag, setClientTag] = useState([])
   // 已选择的标签
   const [chooseTag, setChooseTag] = useState([])
 
@@ -29,7 +29,7 @@ function UserInfo(props) {
     }
 
     // 客户标签
-    setClientTag(qwUserList.tagRecordsList)
+    // setClientTag(qwUserList.tagRecordsList)
     // 是否已到院
     setIshospital(qwUserList.visitStatus)
     // setHospitalList(hlList.list);
@@ -44,26 +44,26 @@ function UserInfo(props) {
   }
 
   // 打招呼
-  const handleChat = () => {
-    message.info('开发中')
-  }
+  // const handleChat = () => {
+  //   message.info('开发中')
+  // }
 
   // 客户标签循环
-  const tagRender = (props) => {
-    const { label } = props
-    const onPreventMouseDown = (e) => {
-      e.preventDefault()
-      e.stopPropagation()
-    }
-    return (
-      <Tag
-        onMouseDown={onPreventMouseDown}
-        style={{ marginRight: 3, color: '#333' }}
-      >
-        {label}
-      </Tag>
-    )
-  }
+  // const tagRender = (props) => {
+  //   const { label } = props
+  //   const onPreventMouseDown = (e) => {
+  //     e.preventDefault()
+  //     e.stopPropagation()
+  //   }
+  //   return (
+  //     <Tag
+  //       onMouseDown={onPreventMouseDown}
+  //       style={{ marginRight: 3, color: '#333' }}
+  //     >
+  //       {label}
+  //     </Tag>
+  //   )
+  // }
 
   // 获取已被选中的客户标签（数组）
   const handleTagChange = (tagArr) => {
@@ -80,7 +80,10 @@ function UserInfo(props) {
         }}
         loading={userListSkeleton}
       >
-        <Card bordered={false} className='userInfo-list'>
+        <Card
+          bordered={false}
+          className='userInfo-list'
+        >
           <div className={'userInfo-left'}>
             <Meta
               avatar={<Avatar src={qwUserList.avatar} />}
@@ -88,12 +91,8 @@ function UserInfo(props) {
               description={
                 <>
                   <div>
-                    <span className={'user-mobile'}>
-                      电话: {hideMobileNum(qwUserList.mobile)}
-                    </span>
-                    <span className={'user-gender'}>
-                      性别: {qwUserList.gender}
-                    </span>
+                    <span className={'user-mobile'}>电话: {hideMobileNum(qwUserList.mobile)}</span>
+                    <span className={'user-gender'}>性别: {qwUserList.gender}</span>
                   </div>
                 </>
               }
@@ -109,7 +108,10 @@ function UserInfo(props) {
                 className={'user-edit'}
               ></Skeleton.Button>
             ) : (
-              <span className={'user-edit'} onClick={handleEdit}>
+              <span
+                className={'user-edit'}
+                onClick={handleEdit}
+              >
                 <FormOutlined />
               </span>
             )}
@@ -130,7 +132,11 @@ function UserInfo(props) {
         </Card>
       </Skeleton>
 
-      <Skeleton active paragraph={{ rows: 3 }} loading={userListSkeleton}>
+      <Skeleton
+        active
+        paragraph={{ rows: 3 }}
+        loading={userListSkeleton}
+      >
         <div className={'clientInfo'}>
           <span className={'cTag'}>
             客户来源
@@ -152,9 +158,7 @@ function UserInfo(props) {
               disabled
               showArrow={false}
               bordered={false}
-              value={
-                isHospital !== '' && isHospital !== null ? isHospital : '未到院'
-              }
+              value={isHospital !== '' && isHospital !== null ? isHospital : '未到院'}
               className={'isHospital tagSelect'}
             />
           </span>

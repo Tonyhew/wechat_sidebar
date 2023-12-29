@@ -13,6 +13,21 @@ const dataList = [
     title: '交易记录',
     href: 'payment',
   },
+  {
+    id: 3,
+    title: '未划扣记录',
+    href: 'deduction'
+  },
+  {
+    id: 4,
+    title: '已划扣记录',
+    href: 'historyDeduction'
+  },
+  {
+    id: 5,
+    title: '回访记录',
+    href: 'returnVisit'
+  },
   // {
   //   id: 2,
   //   title: '客户轨迹',

@@ -4,25 +4,25 @@ import axios from 'axios';
 import api from '../config/api.config';
 // import '../assets/style/ClientProcess.scss'
 
-const timeLineData = [
-  {
-    id: 1,
-    time: '2021-09-01',
-    event: 'ddddddddddddddd',
-  },
-  {
-    id: 2,
-    time: '2021-09-05',
-    event: 'ddddddddddddddd',
-  },
-];
+// const timeLineData = [
+//   {
+//     id: 1,
+//     time: '2021-09-01',
+//     event: 'ddddddddddddddd',
+//   },
+//   {
+//     id: 2,
+//     time: '2021-09-05',
+//     event: 'ddddddddddddddd',
+//   },
+// ];
 
 function Payment(props) {
   const { crmId } = props;
   // 时间线（时间及详细说明）
   const [timeLine, setTimeLine] = useState([]);
   // 时间轴备注内容
-  const [tlRemark, setTLRemark] = useState('');
+  // const [tlRemark, setTLRemark] = useState('');
 
   const getUserPayment = useCallback(() => {
     axios({
@@ -41,7 +41,7 @@ function Payment(props) {
       const data = res.data;
       setTimeLine(data.data);
     });
-  }, []);
+  }, [crmId]);
 
   useEffect(() => {
     // setTimeLine(timeLineData)

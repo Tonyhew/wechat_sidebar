@@ -11,11 +11,14 @@ import * as ww from '@wecom/jssdk';
 import api from '../config/api.config';
 import Home from '../pages/Home';
 import Client from './Client';
-import Clientpath from './Clientpath';
-import MedicalDairy from './MedicalDairy';
+// import Clientpath from './Clientpath'
+// import MedicalDairy from './MedicalDairy'
 import Payment from './Payment';
 import '../assets/style/Common.scss';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import Deduction from './Deduction';
+import HistoryDeduction from './HistoryDeduction';
+import ReturnVisit from './ReturnVisit';
 
 // import CP from './Clientprocess';
 // import Healthfile from './Healthfile';
@@ -25,6 +28,12 @@ import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
  */
 const corpId = 'wwc3f51e8c5ad724b9',
   agentId = '1000013';
+
+message.config({
+  duration: 2,
+  maxCount: 2,
+  top: 1
+});
 
 const Main = () => {
   const url = window.location.href;
@@ -94,8 +103,8 @@ const Main = () => {
       url: `${api.getSignature}${url}`,
       withCredentials: true,
       header: {
-        'Acess-Control-Allow-Origin': '*',
-      },
+        'Acess-Control-Allow-Origin': '*'
+      }
     }).then((res) => {
       const result = res.data.data;
       const timestamp = result.timestamp;
@@ -125,7 +134,7 @@ const Main = () => {
           return {
             timestamp: qwTS,
             nonceStr: qwNonceStr,
-            signature: qwSignature,
+            signature: qwSignature
           };
         }
       },
@@ -136,7 +145,7 @@ const Main = () => {
 
       onAgentConfigFail(err) {
         console.log(err);
-      },
+      }
     });
   }, [qwNonceStr, qwSignature, qwTS]);
 
@@ -165,8 +174,8 @@ const Main = () => {
       url: `${api.getUserInfo}${qwUserId}`,
       withCredentials: true,
       header: {
-        'Acess-Control-Allow-Origin': '*',
-      },
+        'Acess-Control-Allow-Origin': '*'
+      }
     }).then((res) => {
       console.log(res);
       if (res.data.errMsg === '成功') {
@@ -177,7 +186,7 @@ const Main = () => {
         // message.error('请确认你的电话号码是否正确填写!!!');
       }
     });
-  }, [qwUserId])
+  }, [qwUserId]);
 
   useEffect(() => {
     if (qwUserList.length <= 0 && qwUserList) {
@@ -188,13 +197,40 @@ const Main = () => {
   return isQWXEnv ? (
     <Router>
       <Routes>
-        <Route caseSensitive path='/' element={<Home qwUserList={qwUserList} qwUserId={qwUserId} />}>
-          <Route caseSensitive path='/client' element={<Client qwUserList={qwUserList} />}></Route>
+        <Route
+          caseSensitive
+          path="/"
+          element={<Home qwUserList={qwUserList} qwUserId={qwUserId} />}
+        >
+          <Route
+            caseSensitive
+            path="/client"
+            element={<Client qwUserList={qwUserList} />}
+          ></Route>
+          <Route
+            caseSensitive
+            path="/payment"
+            element={<Payment crmId={userCrmId} />}
+          ></Route>
+          <Route
+            caseSensitive
+            path="/deduction"
+            element={<Deduction crmId={userCrmId} />}
+          />
+          <Route
+            caseSensitive
+            path="/historyDeduction"
+            element={<HistoryDeduction crmId={userCrmId} />}
+          />
+          <Route
+            caseSensitive
+            path="/returnVisit"
+            element={<ReturnVisit crmId={userCrmId} />}
+          />
           {/* <Route path='/clientprocess' element={<CP />}></Route> */}
           {/* <Route path='/Healthfile' element={<Healthfile />}></Route> */}
-          <Route caseSensitive path='/Clientpath' element={<Clientpath />}></Route>
-          <Route caseSensitive path='/MedicalDairy' element={<MedicalDairy />}></Route>
-          <Route caseSensitive path='/payment' element={<Payment crmId={userCrmId} />}></Route>
+          {/* <Route caseSensitive path='/Clientpath' element={<Clientpath />}></Route> */}
+          {/* <Route caseSensitive path='/MedicalDairy' element={<MedicalDairy />}></Route> */}
         </Route>
       </Routes>
     </Router>

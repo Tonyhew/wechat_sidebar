@@ -7,8 +7,18 @@ let servicePath = {
   getSignature: `${url}/signature/getSignature?htmlUrl=`,
   // 获取用户信息
   getUserInfo: `${url}/customerInformation/getCustomerDetails?userId=`,
+  /**
+   * 已划扣记录
+   */
   selectDeductionRecordList: `${url}/UsageRecord/selectDeductionRecordList`,
-
+  /**
+   * 未划扣记录
+   */
+  selectOrdersNotDeducteds: `${url}/UsageRecord/selectOrdersNotDeducteds`,
+  /**
+   * 回访记录
+   */
+  VisitHistoryList: `${url}/VisitHistory/VisitHistoryList`
 };
 
 export default servicePath;
