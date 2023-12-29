@@ -10,7 +10,7 @@ import UserInfo from '../components/UserInfo';
 import Menu from '../components/Menu';
 
 
-function Home(props) {
+const Home = (props) => {
 
   return (
     <div>

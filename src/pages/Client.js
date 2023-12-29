@@ -5,11 +5,12 @@
 
 // import { message } from 'antd';
 import React, { useCallback, useEffect, useState } from 'react';
-import { Skeleton, message } from 'antd';
+import { Descriptions, Skeleton, message } from 'antd';
 import { fmoney } from '../utils';
 
-function Client(props) {
+const Client = (props) => {
   const { qwUserList } = props;
+  const { Item } = Descriptions;
   const [dataLoading, setDataLoading] = useState(false);
   const [clientInfo, setClientInfo] = useState([]);
   const [currentAge, setCurrentAge] = useState('');
@@ -49,6 +50,64 @@ function Client(props) {
       });
   }, [clientInfo.birthday, qwUserList]);
 
+  const items = [
+    {
+      key: '姓名',
+      label: '姓名',
+      children: clientInfo.name
+    },
+    {
+      key: '性别',
+      label: '性别',
+      children: clientInfo.gender
+    },
+    {
+      key: '会员等级',
+      label: '会员等级',
+      children: clientInfo.memberLevel
+    },
+    {
+      key: '未回访天数',
+      label: '未回访天数',
+      children: clientInfo.noReturnVisitDays
+    },
+    {
+      key: '电话',
+      label: '电话',
+      children: clientInfo.mobile
+    },
+    {
+      key: '生日',
+      label: '生日',
+      children: clientInfo.birthday
+    },
+    {
+      key: '年龄',
+      label: '年龄',
+      children: currentAge
+    },
+    {
+      key: '地区',
+      label: '地区',
+      children: `${clientInfo.addressOne} - ${clientInfo.addressTwo}`
+    },
+    {
+      key: '咨询意向',
+      label: '咨询意向',
+      children: clientInfo.consultIntention
+    },
+    {
+      key: '消费金额',
+      label: '消费金额',
+      children: `${fmoney(clientInfo.totalMoney, 2)} 元`
+    },
+    {
+      key: '顾客类型',
+      label: '顾客类型',
+      children: clientInfo.customerLevel
+    }
+  ];
+
   useEffect(() => {
     getClientInfo();
   }, [getClientInfo]);
@@ -59,19 +118,17 @@ function Client(props) {
 
       {!dataLoading && (
         <div className={'client_info'}>
-          <p>姓名: {clientInfo.name}</p>
-          <p>性别: {clientInfo.gender}</p>
-          <p>会员等级: {clientInfo.memberLevel}</p>
-          <p>未回访天数: {clientInfo.noReturnVisitDays}</p>
-          <p>电话: {clientInfo.mobile}</p>
-          <p>生日: {clientInfo.birthday}</p>
-          <p>年龄: {currentAge} 岁</p>
-          <p>
-            地区: {clientInfo.addressOne} - {clientInfo.addressTwo}
-          </p>
-          <p>咨询意向: {clientInfo.consultIntention}</p>
-          <p>消费金额: {fmoney(clientInfo.totalMoney, 2)} 元</p>
-          <p>顾客类型: {clientInfo.customerLevel}</p>
+          <Descriptions bordered layout={'horizontal'}>
+            {items.map((item) => {
+              return (
+                <Item
+                  key={item.key}
+                  label={item.label}
+                  children={item.children}
+                />
+              );
+            })}
+          </Descriptions>
         </div>
       )}
     </div>
