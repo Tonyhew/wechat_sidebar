@@ -226,10 +226,6 @@ const Main = () => {
             path="/returnVisit"
             element={<ReturnVisit crmId={userCrmId} />}
           />
-          {/* <Route path='/clientprocess' element={<CP />}></Route> */}
-          {/* <Route path='/Healthfile' element={<Healthfile />}></Route> */}
-          {/* <Route caseSensitive path='/Clientpath' element={<Clientpath />}></Route> */}
-          {/* <Route caseSensitive path='/MedicalDairy' element={<MedicalDairy />}></Route> */}
         </Route>
       </Routes>
     </Router>
